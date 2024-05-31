@@ -10,8 +10,9 @@ class TestSimulateCodingFramework(unittest.TestCase):
                               ["FILE_COPY", "Cars.txt", "Cars2.txt"], 
                               ["FILE_GET", "Cars2.txt"] ]
         self.test_data_2 = [["FILE_UPLOAD", "Foo.txt", "100kb"], 
-                            ["FILE_UPLOAD", "Bar.csv", "200kb"], 
+                            ["FILE_UPLOAD", "Bay.csv", "200kb"],
                             ["FILE_UPLOAD", "Baz.pdf", "300kb"],
+                            ["FILE_UPLOAD", "Bar.csv", "200kb"],
                             ["FILE_SEARCH", "Ba"]]
         self.test_data_3 = [
             ["FILE_UPLOAD_AT", "2021-07-01T12:00:00", "Python.txt", "150kb"], 
@@ -43,7 +44,8 @@ class TestSimulateCodingFramework(unittest.TestCase):
 
     def test_group_2(self):
         output = simulate_coding_framework(self.test_data_2)
-        self.assertEqual(output, ["uploaded Foo.txt", "uploaded Bar.csv", "uploaded Baz.pdf", "found [Bar.csv, Baz.pdf]"])
+        self.assertEqual(output, ["uploaded Foo.txt", "uploaded Bay.csv", "uploaded Baz.pdf", "uploaded Bar.csv",
+                                  "found [Baz.pdf, Bar.csv, Bay.csv]"])
 
     def test_group_3(self):
         output = simulate_coding_framework(self.test_data_3)
